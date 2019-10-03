@@ -11,10 +11,14 @@
     ],
     "require": {
         "php": ">=7.1",
-        "symfony/framework-bundle": "~4.0",
-        "aws/aws-sdk-php-symfony": "^2.0"
+        "aws/aws-sdk-php-symfony": "^2.0",
+        "symfony/config": "^3.4|^4.3",
+        "symfony/dependency-injection": "^3.4|^4.3",
+        "symfony/http-kernel": "^3.4|^4.3",
+        "ramsey/uuid-doctrine": "^1.5"
     },
     "require-dev": {
+        "symfony/framework-bundle": "~4.0",
         "phpstan/phpstan-symfony": "^0.11.6",
         "symfony/orm-pack": "^1.0",
         "phpspec/phpspec": "^3.0|^4.0",
