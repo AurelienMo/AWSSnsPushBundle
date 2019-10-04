@@ -24,10 +24,10 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         if (\method_exists(TreeBuilder::class, '__construct')) {
-            $treeBuilder = new TreeBuilder('aws', 'variable');
+            $treeBuilder = new TreeBuilder('aws_amorvan', 'variable');
         } else { // which is not the case for older versions
             $treeBuilder = new TreeBuilder;
-            $treeBuilder->root('aws', 'variable');
+            $treeBuilder->root('aws_amorvan', 'variable');
         }
         return $treeBuilder;
     }
