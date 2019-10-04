@@ -23,12 +23,15 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        if (\method_exists(TreeBuilder::class, '__construct')) {
-            $treeBuilder = new TreeBuilder('aws_amorvan', 'variable');
-        } else { // which is not the case for older versions
-            $treeBuilder = new TreeBuilder;
-            $treeBuilder->root('aws_amorvan', 'variable');
-        }
+        $treeBuilder = new TreeBuilder('amorvan_aws');
+        $treeBuilder->getRootNode()
+            ->children()
+                ->scalarNode('get_arn_ios')->defaultValue('arn:aws:sns:us-east-1:123456789012:app/APNS/my-app-ios')->end()
+                ->scalarNode('get_arn_android')->defaultValue('arn:aws:sns:us-east-1:123456789012:app/APNS/my-app-android')->end()
+                ->scalarNode('topic_arn_broadcast')->defaultValue('arn:aws:sns:us-east-1:123456789012:app/APNS/my-app-android')->end()
+            ->end()
+            ;
+
         return $treeBuilder;
     }
 }

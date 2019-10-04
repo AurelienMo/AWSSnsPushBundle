@@ -17,13 +17,39 @@ This bundles requires Symfony 3.4+ or 4.3+.
 ```
 composer require amorvan/aws-sns-push-bundle
 ```
-### Step 2 - Enable Bundles (Amorvan/AWSSnsPushBundle)
+### Step 2 - Enable Bundles (Amorvan/AWSSnsPushBundle & AWS SDK)
 
 #### Symfony 3 Version :
 Register bundle into `app/AppKernel.php`:
+```
+<?php
+// app/AppKernel.php
+
+// ...
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new Aws\Symfony\AwsBundle(),
+            new Amorvan\AwsSnsPushBundle\AmorvanAwsSnsPushBundle(),
+        );
+    }
+
+    // ...
+}
+```
 
 #### Symfony 4 version :
-Register bundle into `config/bundles.php` (Flex dit it automatically):
+Register bundle into `config/bundles.php`:
+```
+return [
+    //...
+    Aws\Symfony\AwsBundle::class => ['all' => true],
+    Amorvan\AwsSnsPushBundle\AmorvanAwsSnsPushBundle::class => ['all' => true],
+];
+```
 
 ### Step 3 - Create entity `Device` and `LogHistoricPush`
 ```
@@ -145,3 +171,13 @@ class LogHistoricPush extends AbstractLogHistoricPush
     protected $topicArn;
 }
 ```
+### Step 4 - Update database Schema
+
+#### Use Doctrine schema update
+`bin/console doctrine:schema:update --force`
+#### Use Migrations Doctrine
+`bin/console doctrine:migrations:diff`
+
+`bin/console doctrine:migrations:migrate`
+
+### Step 5 - Configure Bundle
