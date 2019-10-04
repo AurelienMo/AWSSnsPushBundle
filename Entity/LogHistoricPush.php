@@ -19,17 +19,11 @@ use Ramsey\Uuid\Uuid;
 /**
  * Class LogHistoricPush
  */
-class LogHistoricPush
+class LogHistoricPush extends AbstractEntity
 {
     const LIST_PUSH = [
 
     ];
-
-    /** @var int */
-    protected $id;
-
-    /** @var DateTime */
-    protected $createdAt;
 
     /** @var string */
     protected $type;
@@ -53,7 +47,38 @@ class LogHistoricPush
         $this->message = $message;
         $this->pushsNumber = $pushsNumber;
         $this->topicArn = $topicArn;
-        $this->id = Uuid::uuid4()->toString();
-        $this->createdAt = new DateTime();
+        parent::__construct();
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPushsNumber(): int
+    {
+        return $this->pushsNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTopicArn(): string
+    {
+        return $this->topicArn;
     }
 }

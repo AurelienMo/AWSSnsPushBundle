@@ -15,7 +15,8 @@
         "symfony/config": "^3.4|^4.3",
         "symfony/dependency-injection": "^3.4|^4.3",
         "symfony/http-kernel": "^3.4|^4.3",
-        "ramsey/uuid-doctrine": "^1.5"
+        "ramsey/uuid-doctrine": "^1.5",
+        "symfony/security": "^4.3"
     },
     "require-dev": {
         "symfony/framework-bundle": "~4.0",
