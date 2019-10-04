@@ -11,19 +11,25 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Amorvan\AwsSnsPushBundle\Entity;
+namespace Amorvan\AwsSnsPushBundle\Model;
 
 use DateTime;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class LogHistoricPush
+ * Class AbstractLogHistoricPush
  */
-class LogHistoricPush extends AbstractEntity
+abstract class AbstractLogHistoricPush
 {
     const LIST_PUSH = [
 
     ];
+
+    /** @var int */
+    protected $id;
+
+    /** @var DateTime */
+    protected $createdAt;
 
     /** @var string */
     protected $type;

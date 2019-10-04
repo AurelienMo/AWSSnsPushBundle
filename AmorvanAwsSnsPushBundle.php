@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Amorvan\AwsSnsPushBundle;
 
-use Amorvan\AwsSnsPushBundle\DependencyInjection\Compiler\DoctrineCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -22,9 +21,10 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class AmorvanAwsSnsPushBundle extends Bundle
 {
+    const VERSION = '1.0.0';
+
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        $container->addCompilerPass(new DoctrineCompilerPass());
     }
 }

@@ -11,15 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Amorvan\AwsSnsPushBundle\Entity;
+namespace Amorvan\AwsSnsPushBundle\Model;
 
 use DateTime;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class Device
+ * Class AbstractDeviceModel
  */
-class DeviceModel
+abstract class AbstractDeviceModel
 {
     /** @var int */
     protected $id;

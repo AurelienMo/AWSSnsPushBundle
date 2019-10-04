@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Amorvan\AwsSnsPushBundle\DependencyInjection;
 
+use Amorvan\AwsSnsPushBundle\AmorvanAwsSnsPushBundle;
 use Aws;
 use Aws\AwsClient;
-use Aws\Symfony\AwsBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -43,7 +43,7 @@ class AwsSnsExtension extends Extension
             ->getDefinition('aws_sdk')
             ->replaceArgument(0, $config + ['ua_append' => [
                                    'Symfony/' . Kernel::VERSION,
-                                   'SYMOD/' . AwsBundle::VERSION,
+                                   'SYMOD/' . AmorvanAwsSnsPushBundle::VERSION,
                                ]]);
         foreach (array_column(Aws\manifest(), 'namespace') as $awsService) {
             $serviceName = 'aws.' . strtolower($awsService);
